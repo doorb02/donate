@@ -22,7 +22,7 @@
  */
 class Donate_Public {
 
-	/**
+    /**
 	 * The ID of this plugin.
 	 *
 	 * @since    1.0.0
@@ -40,7 +40,8 @@ class Donate_Public {
 	 */
 	private $version;
 
-	/**
+
+    /**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
@@ -99,5 +100,15 @@ class Donate_Public {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/donate-public.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+    /**
+     * Function that shows a donation form.
+     *
+     * @since   1.0.0
+     */
+	public function show_donation_form() {
+        $content = '<p>Hello donation!</p>';
+        return $content;
+    }
 
 }

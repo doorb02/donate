@@ -1,0 +1,4 @@
+.rangeslider, .rangeslider__fill {background: #CCC;}
+    .rangeslider__fill {background: #00ff00;}
+    .rangeslider__handle {background: white;
+    border: 1px solid #CCC;}

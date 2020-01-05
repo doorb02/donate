@@ -20,6 +20,8 @@
  * @subpackage Donate/admin
  * @author     Bert Doornbusch <bert.doornbusch@gmail.com>
  */
+require_once 'settings.php';
+
 class Donate_Admin {
 
 	/**
@@ -99,5 +101,17 @@ class Donate_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/donate-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+
+	public function qrs_page_init() {
+        Settings::qrs_page_init();
+    }
+
+    public function qrs_settings_scripts() {
+        Settings::qrs_settings_scripts();
+    }
+
+    public function qrs_admin_notice($message) {
+        Settings::qrs_admin_notice($message);
+    }
 
 }

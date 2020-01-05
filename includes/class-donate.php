@@ -157,6 +157,9 @@ class Donate {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+        $this->loader->add_action('admin_menu', $plugin_admin, 'qrs_page_init');
+        $this->loader->add_action('admin_notices', $plugin_admin, 'qrs_admin_notice' );
+        $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'qrs_settings_scripts');
 	}
 
 	/**
@@ -174,7 +177,13 @@ class Donate {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
         $this->loader->add_shortcode( 'donate', $plugin_public, 'show_donation_form');
-	}
+
+//        $this->loader->add_shortcode('qrs', $plugin_public, 'qrs_rangeslider');
+        $this->loader->add_action('init', $plugin_public, 'qrs_create_css_file');
+        $this->loader->add_action('wp_enqueue_scripts', $plugin_public,'qrs_scripts');
+        $this->loader->add_filter('plugin_action_links', $plugin_public,'qrs_plugin_action_links', 10, 2);
+
+    }
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
